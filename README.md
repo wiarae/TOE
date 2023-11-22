@@ -8,7 +8,23 @@ The code will be released soon.
 ![Screen Shot 2023-10-27 at 7 32 54 PM](https://github.com/wiarae/TOE/assets/47803158/f718e169-e3e9-4955-bf25-d2842bb93f2e)
 
 ## Preparation 
-To train the text decoder for word-level outliers, you can execute ```python preprocess/train_decoder.py```. Additionally, we provide a pre-trained model in this Google Drive link.
+
+### Word-level outlier
+To train the text decoder for word-level outliers, you can execute ```python preprocess/train_decoder.py```. 
+To run this code, you need to download the [MS-COCO](https://cocodataset.org/#home) dataset and place it in the ```data/MS-COCO``` directory.
+
+We also provide a pre-trained model in this Google Drive link.
+We adopt this text decoder code from [ZOC](https://github.com/sesmae/ZOC).
+
+### Description-level outlier 
+
+We adopted the method of generating descriptions for in-dataset from [this paper](https://github.com/sachit-menon/classify_by_description_release/tree/master).
+Before running the code, you need to download the .json files for your targeted in-distribution data from [this link](https://github.com/sachit-menon/classify_by_description_release/tree/master).
+To create .npy file for description-level textul outlier, run 
+```
+cd preprocess
+python preprocess/description.py
+```
 
 ## Quick Start 
 - ```--decode_mode```: word, description, caption-level textual outlier
