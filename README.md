@@ -26,6 +26,18 @@ cd preprocess
 python description.py
 ```
 
+### Caption-level outlier
+
+Create .npy file for caption-level outlier by running codes below.
+
+```diff
+cd preprocess
+# generate captions
+python blip.py
+# filter generated captions
+python caption_select.py
+```
+
 ## Quick Start 
 - ```--decode_mode```: word, description, caption-level textual outlier
 - ```--debug```: load pre-generated word-level textual outlier .npy file
