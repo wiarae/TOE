@@ -19,7 +19,7 @@ We adopt this text decoder code from [ZOC](https://github.com/sesmae/ZOC).
 ### Description-level outlier 
 
 We adopted the method of generating descriptions for in-dataset from [this paper](https://github.com/sachit-menon/classify_by_description_release/tree/master).
-Before running the code, you need to download the .json files for your targeted in-distribution data from [this link](https://github.com/sachit-menon/classify_by_description_release/tree/master).
+Before running the code, you need to download the .json files for your targeted in-distribution data from [this link](https://github.com/sachit-menon/classify_by_description_release/tree/master) and place it under ```preprocess``` folder.
 To create .npy file for description-level textul outlier, run 
 ```
 cd preprocess
@@ -36,6 +36,25 @@ cd preprocess
 python blip.py
 # filter generated captions
 python caption_select.py
+```
+
+### Out-of-distribution Dataset 
+We use large-scale OoD datasets iNaturalist, SUN, Places and Texture curated by Huang et al. 2021. Please follow instruction from this repository to download the subsampled datasets where semantically overlapped classes with ImageNet-1K are removed. 
+
+The overall file structure is as follows: 
+```
+TOE
+|--preprocess
+   |--descriptors_imagenet.json
+   |--npys
+      |--ImageNet
+         |--ImageNet_outlier_description.npy
+|--datasets
+   |--Imagenet
+   |--iNaturalist
+   |--SUN
+   |--Places
+   |--dtd
 ```
 
 ## Quick Start 
