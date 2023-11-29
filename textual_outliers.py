@@ -88,7 +88,7 @@ def image_decoder(clip_model, berttokenizer, bert_model, device, val_loader, tes
     return outlier_labels
 
 def get_textual_outliers(args, clip_model, val_loader, test_labels, device):
-    if args.decode_mode == 'word':
+    if args.outlier == 'word':
         if args.debug:
             print('load npy')
             # text_ood_inputs = np.load(f'{args.log_directory}/{args.in_dataset}_bert.npy', allow_pickle=True)
@@ -114,7 +114,7 @@ def get_textual_outliers(args, clip_model, val_loader, test_labels, device):
                                             nonsemantic_words)
             np.save(f'preprocess/npys/{args.in_dataset}/{args.in_dataset}_outlier_word.npy', np.array(text_ood_inputs, dtype=object),
                     allow_pickle=True)
-    elif args.decode_mode == 'caption':
+    elif args.outlier == 'caption':
         if args.textreplace:
             blip_text_ood_inputs = np.load(f'npys/{args.in_dataset}/{args.in_dataset}_{args.blip_mode}_textreplace.npy',
                                            allow_pickle=True)
@@ -134,7 +134,7 @@ def get_textual_outliers(args, clip_model, val_loader, test_labels, device):
             print(len(text_ood_inputs))
         else:
             text_ood_inputs = blip_text_ood_inputs
-    elif args.decode_mode == 'desc':
+    elif args.outlier == 'desc':
         desc_text_ood_inputs = np.load(f'preprocess/npys/{args.in_dataset}/{args.in_dataset}_outlier_description.npy',
                                            allow_pickle=True)
         if args.desc_filter:

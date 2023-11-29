@@ -50,7 +50,7 @@ def process_args():
                         help='temperature parameter')
     parser.add_argument('--oe_batch_size', type=int, default=32, help='Batch size.')
     parser.add_argument('--prefetch', type=int, default=4, help='Pre-fetching threads.')
-    parser.add_argument('--decode_mode', type=str, required=True, choices=['word', 'caption', 'desc'])
+    parser.add_argument('--outlier', type=str, required=True, choices=['word', 'caption', 'desc'])
     parser.add_argument('--num_classes', type=int, required=True, choices=[2, 10, 20, 100, 1000])
     parser.add_argument('--blip_mode', type=str, default='blip2', choices=['blip_m', 'blip', 'blip2', 'blip_3', 'blip2_3', 'blip2_3_opt'])
     parser.add_argument('--run', type=str, required = True)
@@ -89,14 +89,14 @@ def process_args():
     parser.add_argument('--template', default=True)
     parser.add_argument('--fdim', type=int, default=512)
     parser.add_argument('--save_model', default=True)
-    parser.add_argument('--saved_model_path', type=str, default='./preprocess/trained_model/')
+    parser.add_argument('--saved_model_path', type=str, default='preprocess/trained_model/')
 
     args = parser.parse_args()
 
-    if args.decode_mode == 'caption':
-        args.log_directory = f"results/caption/{args.in_dataset}/{args.decode_mode}/run{args.run}"
+    if args.outlier == 'caption':
+        args.log_directory = f"results/caption/{args.in_dataset}/{args.outlier}/run{args.run}"
     else:
-        args.log_directory = f"results/{args.decode_mode}/{args.in_dataset}/run{args.run}"
+        args.log_directory = f"results/{args.outlier}/{args.in_dataset}/run{args.run}"
 
     os.makedirs(args.log_directory, exist_ok=True)
 
@@ -147,7 +147,7 @@ def main(args):
     ood_text_dataloader = DataLoader(ood_text_dataset, batch_size=32, shuffle=True)
 
     if args.inference:
-        model.load_state_dict(torch.load(f'checkpoints/ImageNet/ImageNet_{args.decode_mode}.pt'))
+        model.load_state_dict(torch.load(f'checkpoints/ImageNet/ImageNet_{args.outlier}.pt'))
         metrics_val = evaluate(args, val_loader, model, clip_model)
         print(
             f"val_loss = {metrics_val['loss']:.4f}, val_acc = {metrics_val['acc']:.4f}"
@@ -166,7 +166,7 @@ def main(args):
                     f"val_loss = {metrics_val['loss']:.4f}, val_acc = {metrics_val['acc']:.4f}"
                 )
         if not args.save_model:
-            torch.save(model.state_dict(), f"checkpoints/{args.in_dataset}/{args.run}/{args.in_dataset}_{args.decode_mode}_offset{args.add_modality_offset}.pt")
+            torch.save(model.state_dict(), f"checkpoints/{args.in_dataset}/{args.run}/{args.in_dataset}_{args.outlier}_offset{args.add_modality_offset}.pt")
         else:
             print('not save model')
         loss = metrics_val['loss']

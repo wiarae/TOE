@@ -40,7 +40,7 @@ def train_one_epoch_text_oe(
             data_h = model(data)
         else:
             data_h = clip_model.encode_image(data)
-        if args.decode_mode == 'word' or args.decode_mode == 'coco' or args.template:
+        if args.outlier == 'word' or args.outlier == 'coco' or args.template:
             out_batch[0] = clip_model.encode_text(out_batch[0])
 
         if args.text_map:

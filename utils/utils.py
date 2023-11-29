@@ -7,17 +7,17 @@ import argparse
 def setup_log(args):
     log = logging.getLogger(__name__)
     formatter = logging.Formatter('%(asctime)s : %(message)s')
-    fileHandler = logging.FileHandler(os.path.join(args.log_directory, f"OE_text_decoder_{args.decode_mode}.log"), mode='a')
+    fileHandler = logging.FileHandler(os.path.join(args.log_directory, f"OE_text_decoder_{args.outlier}.log"), mode='a')
     fileHandler.setFormatter(formatter)
     streamHandler = logging.StreamHandler()
     streamHandler.setFormatter(formatter)
     log.setLevel(logging.DEBUG)
     log.addHandler(fileHandler)
     log.addHandler(streamHandler)
-    if args.decode_mode == 'caption':
-        log.debug(f"######### {args.decode_mode}_level_outlier_{args.blip_mode} ############")
+    if args.outlier == 'caption':
+        log.debug(f"######### {args.outlier}_level_outlier_{args.blip_mode} ############")
     else:
-        log.debug(f"######### {args.decode_mode}_level_outlier ############")
+        log.debug(f"######### {args.outlier}_level_outlier ############")
     return log
 
 def stable_cumsum(arr, rtol=1e-05, atol=1e-08):
