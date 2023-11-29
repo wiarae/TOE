@@ -65,6 +65,8 @@ def process_args():
     parser.add_argument('--noise_variance', type=float, default=0.016, help='noise variance')
     parser.add_argument('--uniform_noise', default=False, help='use uniform noise instead of gaussian')
     parser.add_argument('--dont_norm', default=False, help='dont normalize CLIP embeddings')
+    parser.add_argument('--sample_number', type=int, default=100)
+    parser.add_argument('--loss_weight', type=float, default=0.1)
     parser.add_argument('--run', type=str)
     parser.add_argument('--domain', type=str, choices=['image', 'text'], required=True)
     parser.add_argument('--mode', type=str, choices=['real', 'virtual'], required=True)

@@ -142,7 +142,7 @@ for idx, batch in enumerate(data_loader):
     # print(generate_text)
     # ['a large fountain spewing water into the air']
 
-np.save('npys/ImageNet/ImageNet_blip.npy', np.array(caption_list, dtype=object), allow_pickle=True)
+np.save('npys/ImageNet/ImageNet_outlier_caption.npy', np.array(caption_list, dtype=object), allow_pickle=True)
 # with open("data/ImageNet100/ImageNet100.txt", "w") as fobj:
 #     for x in caption_list:
 #         fobj.write(x + "\n")

@@ -163,7 +163,7 @@ clip_model, transform = clip.load(name=model_name, device="cuda")
 # with open(os.path.join(loc, 'ImageNet100.txt')) as f:
 #     for line in f.readlines():
 #         caption_set.append(line)
-caption_set = np.load('npys/ImageNet/ImageNet_blip.npy', allow_pickle=True)
+caption_set = np.load('npys/ImageNet/ImageNet_outlier_caption.npy', allow_pickle=True)
 # print(caption_set)
 # print(len(caption_set))
 tokenized_texts = clip.tokenize(caption_set).to("cuda")
@@ -200,4 +200,4 @@ outlier_index = get_index[:int(len(score)*0.15)]
 print(len(outlier_index))
 # for i in outlier_index:
 #     print(caption_set[i])
-np.save('npys/ImageNet/ImageNet_outlier_caption.npy', np.array(outlier_index, dtype=object), allow_pickle=True)
+np.save('npys/ImageNet/ImageNet_outlier_caption_index.npy', np.array(outlier_index, dtype=object), allow_pickle=True)

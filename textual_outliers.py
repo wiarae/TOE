@@ -116,12 +116,12 @@ def get_textual_outliers(args, clip_model, val_loader, test_labels, device):
                     allow_pickle=True)
     elif args.outlier == 'caption':
         if args.textreplace:
-            blip_text_ood_inputs = np.load(f'npys/{args.in_dataset}/{args.in_dataset}_{args.blip_mode}_textreplace.npy',
+            blip_text_ood_inputs = np.load(f'preprocess/npys/{args.in_dataset}/{args.in_dataset}_{args.blip_mode}_textreplace.npy',
                                            allow_pickle=True)
         else:
-            caption_set = np.load(f'npys/{args.in_dataset}/{args.in_dataset}_{args.blip_mode}.npy', allow_pickle=True)
+            caption_set = np.load(f'preprocess/npys/{args.in_dataset}/{args.in_dataset}_outlier_caption.npy', allow_pickle=True)
             outlier_index = np.load(
-                f'npys/{args.in_dataset}/{args.in_dataset}_outlier_{args.blip_ratio}_{args.blip_mode}.npy',
+                f'preprocess/npys/{args.in_dataset}/{args.in_dataset}_outlier_caption_index.npy',
                 allow_pickle=True)
             blip_text_ood_inputs = []
             for i in outlier_index:

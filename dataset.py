@@ -89,12 +89,16 @@ def get_test_labels(args):
     elif args.in_dataset in ['bird200', 'car196', 'food101','pet37']:
         test_labels = loader.dataset.class_names_str
     return test_labels
-
+def load_json(filename):
+    if not filename.endswith('.json'):
+        filename += '.json'
+    with open(filename, 'r') as fp:
+        return json.load(fp)
 def get_test_labels_vos(args):
-    loc = './vos'
+    loc = 'preprocess/data'
     class_set = []
     desc = []
-    gpt_descriptions_unordered = load_json('./descriptors_imagenet.json')
+    gpt_descriptions_unordered = load_json('preprocess/descriptors_imagenet.json')
     if args.in_dataset == "ImageNet":
         test_labels = obtain_ImageNet_classes()
     elif args.in_dataset == "ImageNet10":
@@ -112,7 +116,6 @@ def get_test_labels_vos(args):
         for i in test_label:
             i = 'a photo of ' + i
             test_labels.append(i)
-        print(test_labels)
         test_labels.extend(class_set)
 
         classes_to_load = ["brambling", "American bullfrog",
@@ -126,10 +129,7 @@ def get_test_labels_vos(args):
                 desc.append(prompt)
             for k in range(len(prompt_list)):
                 text_labels.append(i)
-        print(desc)
-
         test_labels.extend(desc)
-        print(test_labels)
     elif args.in_dataset == "ImageNet20":
         test_labels = obtain_ImageNet20_classes()
         # print(test_labels)

@@ -226,6 +226,7 @@ def train_one_epoch_virtual_text(
         else:
             target_numpy = target_t.cpu().data.numpy()
             for index in range(len(target)):
+
                 dict_key = target_numpy[index]
                 if number_dict[dict_key] < args.sample_number:
                     data_dict[dict_key][number_dict[dict_key]] = text_h[index].detach()
@@ -246,11 +247,11 @@ def train_one_epoch_virtual_text(
         loss_avg = loss_avg * 0.8 + float(loss) * 0.2
 
 
-    if epoch == 99:
-        mean_embed_id = mean_embed_id.cpu().numpy()
-        temp_precision = temp_precision.cpu().numpy()
-        np.save('npys/ImageNet10/mean_text_new.npy', np.array(mean_embed_id, dtype=object), allow_pickle=True)
-        np.save('npys/ImageNet10/variance_text_new.npy', np.array(temp_precision, dtype=object), allow_pickle=True)
+    # if epoch == 99:
+    #     mean_embed_id = mean_embed_id.cpu().numpy()
+    #     temp_precision = temp_precision.cpu().numpy()
+    #     np.save('npys/ImageNet10/mean_text_new.npy', np.array(mean_embed_id, dtype=object), allow_pickle=True)
+    #     np.save('npys/ImageNet10/variance_text_new.npy', np.array(temp_precision, dtype=object), allow_pickle=True)
 def get_uniform_ball_noise(input_shape, radius=0.1):
     uniform_noise_ball = torch.randn(input_shape, device=device)  # normal distribution
     uniform_noise_sphere = torch.nn.functional.normalize(uniform_noise_ball, dim=1)
