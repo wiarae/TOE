@@ -87,12 +87,14 @@ TOE
 
 ```diff
 # word-level textual outlier
-python main.py --in_dataset ImageNet --num_classes 1000 --decode_mode word --run test 
+python main.py --in_dataset ImageNet --num_classes 1000 --outlier word --run test 
 ```
-## Image vs Text 
+## Image vs Text
+-```--mode```: real or virtual (auxiliary dataset or synthesis in feature space)
+-```--domain```: image or text
 We use ImageNet10 and ImageNet20 from [MCM](https://github.com/deeplearning-wisc/MCM)
 ```
-
+python run.py --in_dataset ImageNet10 --num_classes 10 --outlier dtd --domain text --mode virtual --run test 
 ```
 
 ## Citation and Paper availability
