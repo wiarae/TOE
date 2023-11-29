@@ -59,16 +59,28 @@ TOE
          |--ImageNet_outlier_caption.npy
    |--trained_model
       |--model_epoch100.pt
+   |--data
+      |--ImageNet
+         |--ImageNet_classwise_mean_ImageNet_250_True.pt
+         |--ImageNet_precision_ImageNet_250_True.pt
 |--datasets
    |--Imagenet
    |--iNaturalist
+      |--images
+      |--class_list_old.txt
    |--SUN
+      |--images
+      |--class_list_old.txt
    |--Places
+      |--images
+      |--class_list_old.txt
    |--dtd
+      |--images
+      |--class_list.txt
 ```
 
 ## Quick Start 
-- ```--decode_mode```: word, description, caption-level textual outlier
+- ```--outlier```: word, description, caption-level textual outlier
 - ```--debug```: load pre-generated word-level textual outlier .npy file
 - ```--noise```: option to add noise to text embedding for reducing modality gap
 - ```--run```: name for single run 
@@ -77,6 +89,12 @@ TOE
 # word-level textual outlier
 python main.py --in_dataset ImageNet --num_classes 1000 --decode_mode word --run test 
 ```
+## Image vs Text 
+We use ImageNet10 and ImageNet20 from [MCM](https://github.com/deeplearning-wisc/MCM)
+```
+
+```
+
 ## Citation and Paper availability
 You can find the arXiv version of the paper here: https://arxiv.org/abs/2310.16492
 
