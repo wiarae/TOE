@@ -53,10 +53,10 @@ TOE
    |--descriptors_imagenet.json
    |--npys
       |--ImageNet
-         |--ImageNet_blip.npy
          |--ImageNet_outlier_word.npy
          |--ImageNet_outlier_description.npy
          |--ImageNet_outlier_caption.npy
+         |--ImageNet_outlier_caption_index.npy
    |--trained_model
       |--model_epoch100.pt
    |--data
