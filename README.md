@@ -33,9 +33,9 @@ Create .npy file for caption-level outlier by running codes below.
 
 ```diff
 cd preprocess
-# generate captions
+# generate captions (create {in_dataset}_outlier_caption.npy)
 python blip.py
-# filter generated captions
+# index for filtering generated captions (create {in_dataset}_outlier_caption_index.npy)
 python caption_select.py
 ```
 ### In-distribution Dataset
