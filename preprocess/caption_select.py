@@ -200,4 +200,4 @@ outlier_index = get_index[:int(len(score)*0.15)]
 print(len(outlier_index))
 # for i in outlier_index:
 #     print(caption_set[i])
-np.save('npys/ImageNet/ImageNet_outlier_caption_index.npy', np.array(outlier_index, dtype=object), allow_pickle=True)
+np.save('npys/ImageNet/ImageNet_outlier_caption_index_.npy', np.array(outlier_index, dtype=object), allow_pickle=True)

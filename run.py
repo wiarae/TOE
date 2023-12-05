@@ -228,6 +228,19 @@ def main(args):
             log.debug(f"in_dataset: {args.in_dataset}, out_dataset: {out_dataset}")
             log.debug(f"Evaluting OOD dataset {out_dataset}")
             ood_loader = set_ood_loader_ImageNet(args, out_dataset, transform, root='./')
+        elif args.in_dataset == 'ImageNet10':
+            out_dataset = 'ImageNet20'
+            log.debug(f"in_dataset: {args.in_dataset}, out_dataset: {out_dataset}")
+            log.debug(f"Evaluting OOD dataset {out_dataset}")
+            ood_loader = set_ood_loader_ImageNet(args, out_dataset, transform, root='./')
+            in_score = get_ood_score(val_loader, model, in_dist=True)
+            out_score = get_ood_score(ood_loader, model, in_dist=False)
+            plot_distribution(args, in_score, out_score, out_dataset)
+            log.debug(f"in scores: {stats.describe(in_score)}")
+            log.debug(f"out scores: {stats.describe(out_score)}")
+            auroc_list, aupr_list, fpr_list = [], [], []
+            get_and_print_results(args, log, in_score, out_score,
+                                  auroc_list, aupr_list, fpr_list)
         else:
             out_datasets = ['dtd', 'SUN', 'Places', 'iNaturalist']
             for out_dataset in out_datasets:
@@ -236,14 +249,7 @@ def main(args):
                 log.debug(f"Evaluting OOD dataset {out_dataset}")
                 ood_loader = set_ood_loader_ImageNet(args, out_dataset, transform, root='./')
 
-        in_score = get_ood_score(val_loader, model, in_dist=True)
-        out_score = get_ood_score(ood_loader, model, in_dist=False)
-        plot_distribution(args, in_score, out_score, out_dataset)
-        log.debug(f"in scores: {stats.describe(in_score)}")
-        log.debug(f"out scores: {stats.describe(out_score)}")
-        auroc_list, aupr_list, fpr_list = [], [], []
-        get_and_print_results(args, log, in_score, out_score,
-                              auroc_list, aupr_list, fpr_list)
+
 
     end = time.time()
     sec = (end - start)

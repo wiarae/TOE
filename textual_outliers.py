@@ -79,7 +79,7 @@ def image_decoder(clip_model, berttokenizer, bert_model, device, val_loader, tes
             # if c.endswith("s"): c_ = c[:-1]
             new_topk_tokens.append(c_)
         topk_tokens_list.extend(new_topk_tokens)
-    print(topk_tokens_list)
+    # print(topk_tokens_list)
     unique_entities = list(set(topk_tokens_list) - set(test_labels))
     unique_entities = list(set(unique_entities) - set(nonsemantic_words))
 

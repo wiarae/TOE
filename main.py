@@ -32,6 +32,7 @@ from trainer import train_one_epoch_text_oe, train_one_epoch
 from dataset import get_dataloaders
 from evaluate import evaluate, get_ood_score
 from textual_outliers import get_textual_outliers
+from dataset_codes.train_eval_util import set_ood_loader_ImageNet
 def process_args():
     parser = argparse.ArgumentParser(description='Evaluates MCM Score for CLIP',
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
