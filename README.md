@@ -16,7 +16,7 @@ To run this code, you need to download the [MS-COCO](https://cocodataset.org/#ho
 We also provide a pre-trained model with 100 epoch in [this Google Drive link](https://drive.google.com/file/d/1712GPwiA3gBIZh725JR8NrgB4F0MaWa2/view?usp=sharing). You need to place this checkpoint under ```preprocess/trained_models```.
 We adopt this text decoder code from [ZOC](https://github.com/sesmae/ZOC).
 
-For word-level outlier, we generate outliers during running ```main.py```. We also provide pre-processed .npy file. For quick start, you can run the code with making ``--debug``` option ```True```.  
+For word-level outlier, we generate outliers during running ```main.py```. We also provide pre-processed .npy file. For quick start, you can run the code with making ```--debug``` option ```True```.  
 ### Description-level outlier 
 
 We adopted the method of generating descriptions for in-dataset from [this paper](https://github.com/sachit-menon/classify_by_description_release).
@@ -30,7 +30,7 @@ python description.py
 ### Caption-level outlier
 
 Create .npy file for caption-level outlier by running codes below.
-
+We provide two npy files for ImageNet in this link. 
 ```diff
 cd preprocess
 # generate captions (create {in_dataset}_outlier_caption.npy)
