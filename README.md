@@ -11,9 +11,9 @@ The code will be released soon.
 
 ### Word-level outlier
 To train the text decoder for word-level outliers, you can execute ```python preprocess/train_decoder.py```. 
-To run this code, you need to download the [MS-COCO](https://cocodataset.org/#home) dataset and place it under ```data``` folder, ```data/MS-COCO```.
+To run this code, you need to download the [MS-COCO](https://cocodataset.org/#home) dataset and place it under ```data``` folder, ```TOE/data/MS-COCO```.
 
-We also provide a pre-trained model with 100 epoch in [this Google Drive link](https://drive.google.com/file/d/1712GPwiA3gBIZh725JR8NrgB4F0MaWa2/view?usp=sharing). You need to place this checkpoint under ```preprocess/trained_models```.
+We also provide a pre-trained model with 100 epoch in [this Google Drive link](https://drive.google.com/file/d/1712GPwiA3gBIZh725JR8NrgB4F0MaWa2/view?usp=sharing). You need to place this checkpoint under ```preprocess/trained_model```.
 We adopt this text decoder code from [ZOC](https://github.com/sesmae/ZOC).
 
 For word-level outlier, we generate outliers during running ```main.py```. We also provide pre-processed .npy file. For quick start, you can run the code with making ```--debug``` option ```True```.  
