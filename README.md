@@ -28,7 +28,6 @@ python description.py
 ### Caption-level outlier
 
 Create .npy file for caption-level outlier by running codes below.
-We provide two npy files for ImageNet in this link. 
 ```diff
 cd preprocess
 # generate captions (create {in_dataset}_outlier_caption.npy)
@@ -36,6 +35,8 @@ python blip.py
 # index for filtering generated captions (create {in_dataset}_outlier_caption_index.npy)
 python caption_select.py
 ```
+
+For a quick start, please refer to [this](https://drive.google.com/drive/folders/1OrBHsLAkHizHxR6Cxqy6jTiH1i8l1_O9?usp=sharing) Google Drive link, which contains all the npy files.
 ### In-distribution Dataset
 imagenet_class_clean.npy from [MCM](https://github.com/deeplearning-wisc/MCM)
 
