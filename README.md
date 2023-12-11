@@ -2,7 +2,6 @@
 
 This codebase provides a Pytorch implementation for the paper On the Powerfulness of Textual Outlier Exposure for Visual OoD Detection at NeurIPS 2023.
 
-The code will be released soon.
 
 ## Overview
 ![Screen Shot 2023-10-27 at 7 32 54 PM](https://github.com/wiarae/TOE/assets/47803158/f718e169-e3e9-4955-bf25-d2842bb93f2e)
@@ -12,7 +11,6 @@ The code will be released soon.
 ### Word-level outlier
 To train the text decoder for word-level outliers, you can execute ```python preprocess/train_decoder.py```. 
 To run this code, you need to download the [MS-COCO](https://cocodataset.org/#home) dataset and place it under ```data``` folder, ```TOE/data/MS-COCO```.
-
 We also provide a pre-trained model with 100 epoch in [this Google Drive link](https://drive.google.com/file/d/1712GPwiA3gBIZh725JR8NrgB4F0MaWa2/view?usp=sharing). You need to place this checkpoint under ```preprocess/trained_model```.
 We adopt this text decoder code from [ZOC](https://github.com/sesmae/ZOC).
 
@@ -90,8 +88,9 @@ TOE
 python main.py --in_dataset ImageNet --num_classes 1000 --outlier word --run test 
 ```
 ## Image vs Text
--```--mode```: real or virtual (auxiliary dataset or synthesis in feature space)
--```--domain```: image or text
+The code for this part will be released soon.
+- ```--mode```: real or virtual (auxiliary dataset or synthesis in feature space)
+- ```--domain```: image or text
 We use ImageNet10 and ImageNet20 from [MCM](https://github.com/deeplearning-wisc/MCM)
 ```
 python run.py --in_dataset ImageNet10 --num_classes 10 --outlier dtd --domain text --mode virtual --run test 
